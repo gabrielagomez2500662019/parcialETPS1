@@ -30,23 +30,36 @@ public class MainActivity extends AppCompatActivity {
 
         //validamos contra una cadena de texto
         System.out.println(usuario.getText()+"  "+contra.getText());
-        if (usuario.getText().toString().equals("parcialETps1") && contra.getText().toString().equals("p4rC14l#tp$")){
-            Intent intento=new Intent(this,Dashboard.class);
-            startActivity(intento);
-        }else{
+        if (usuario.getText().toString().equals("") || contra.getText().toString().equals("")){
             Toast toastP = new Toast(getApplicationContext());
             LayoutInflater inflater = getLayoutInflater();
             View layout = inflater.inflate(R.layout.toast_layout,findViewById(R.id.lytMensaje));
 
 
             TextView txtMensaje=(TextView) layout.findViewById(R.id.textView3);
-            txtMensaje.setText("contraseña y usuario no son correctos");
+            txtMensaje.setText("Ingrese los datos por favor");
 
             toastP.setDuration(Toast.LENGTH_LONG);
             toastP.setView(layout);
             toastP.show();
-        }
+        }else{
+            if (usuario.getText().toString().equals("parcialETps1") && contra.getText().toString().equals("p4rC14l#tp$")){
+                Intent intento=new Intent(this,Dashboard.class);
+                startActivity(intento);
+            }else{
+                Toast toastP = new Toast(getApplicationContext());
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast_layout,findViewById(R.id.lytMensaje));
 
+
+                TextView txtMensaje=(TextView) layout.findViewById(R.id.textView3);
+                txtMensaje.setText("contraseña y usuario no son correctos");
+
+                toastP.setDuration(Toast.LENGTH_LONG);
+                toastP.setView(layout);
+                toastP.show();
+            }
+        }
 
 
     }
